@@ -25,7 +25,7 @@
 
 
 	<!-- HikariCP 설정 -->
-	<bean name="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="jdbcUrl"
@@ -38,7 +38,7 @@
 	</bean>
 
 	<!-- DataSource -->
-	<bean name="dataSource"
+	<bean id="dataSource"
 	      class="com.zaxxer.hikari.HikariDataSource"
 	      destroy-method="close">
 	    <constructor-arg ref="hikariConfig" />
@@ -53,7 +53,7 @@
 	
 	
 	<!-- TransactionManager -->
-	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	

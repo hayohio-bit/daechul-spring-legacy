@@ -20,9 +20,11 @@ public class BoardController {
 
   @GetMapping("/list")
   public String list(Model model) {
-    List<BoardDTO> boards = boardService.getBoardList();
-    model.addAttribute("boards", boards);
+    List<BoardDTO> boardList = boardService.getBoardList();	//서비스에서 받아온 결과
+    model.addAttribute("boardList", boardList);
     return "board/list"; // /WEB-INF/views/board/list.jsp
   }
 
+  
+  
 }

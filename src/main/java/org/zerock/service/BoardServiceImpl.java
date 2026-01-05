@@ -16,7 +16,7 @@ public class BoardServiceImpl implements BoardService {
 
   @Override
   public List<BoardDTO> getBoardList() {
-    return boardMapper.getBoardList();
+	return boardMapper.selectBoardList();
   }
 
 
