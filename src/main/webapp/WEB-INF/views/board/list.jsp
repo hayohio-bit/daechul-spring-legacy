@@ -1,6 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<style>
+.content-main {
+  padding: 16px;
+}
+
+.board-list-view {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.board-list-view thead {
+  background-color: #f5f5f5;
+}
+
+.board-list-view th,
+.board-list-view td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.board-list-view tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.board-list-view tbody tr:hover {
+  background-color: #eef5ff;
+}
+</style>
 
 <div class="content-main">
 <table class="board-list-view" id="dataTable">

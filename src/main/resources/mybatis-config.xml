@@ -2,6 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+	<!-- 타입 별칭 정리 블록 : 여러 typeAlias 또는 package를 가질 수 있음 -->
+	<!-- org.zerock.dto 패키지 안의 클래스들에 대해 MyBatis가 자동으로 별칭(alias) 생성 -->
 	<typeAliases>
 		<package name="org.zerock.dto" />
 	</typeAliases>

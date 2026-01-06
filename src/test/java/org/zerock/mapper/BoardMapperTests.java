@@ -1,6 +1,6 @@
 package org.zerock.mapper;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.zerock.dto.BoardDTO;
-import org.zerock.mapper.BoardMapper;
 
 import lombok.extern.log4j.Log4j2;
 @ExtendWith(SpringExtension.class)
@@ -22,10 +21,13 @@ public class BoardMapperTests {
 	private BoardMapper boardMapper;
 	
 	@Test
-	public void testSelectBoardMapper() {
+	public void testSelectBoardList() {
 		List<BoardDTO> list = boardMapper.selectBoardList();
 		assertNotNull(list);
-		log.info(list.get(0));
+		log.info("BoardMapper selectBoardList() 반환 개수: {}", list.size());
+			if (!list.isEmpty()) {
+				log.info("첫 번째 게시글(Mapper): {}", list.get(0));
+		    }	
 	}
 
 }

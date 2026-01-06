@@ -7,5 +7,5 @@ public interface BoardMapper {
 
   List<BoardDTO> selectBoardList();
 
-
+  BoardDTO selectBoard(int bno);
 }

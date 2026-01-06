@@ -11,4 +11,8 @@
 	ORDER BY seq DESC
 </select>
 
+<select id="selectBoard" resultType="BoardDTO">
+	SELECT * from board WHERE bno = #{bno}
+</select>
+
 </mapper>

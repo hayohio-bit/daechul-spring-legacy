@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
-
-	<!-- Appender, Layout 설정 -->
+<!-- 콘솔 출력 설정들 -->
 	<Appenders>
-		<Console name="console" target="SYSTEM_OUT">
-			<PatternLayout pattern="%c %l %5p %m%n" />
-		</Console>
+    	<!-- 테스트/개발용 콘솔 출력기 -->
+    	<Console name="Console" target="SYSTEM_OUT">
+        <!-- 로그 포맷: [시간] [스레드] 레벨 클래스 - 메시지 -->
+        <PatternLayout 
+            pattern="[TEST] %d{HH:mm:ss} [%t] %-5level %c{1.} - %msg%n"/>
+    	</Console>
 	</Appenders>
 
-	<!-- Logger 설정 -->
+	<!-- 로거 설정들 (출력 레벨 제어) -->
 	<Loggers>
-		<Logger name="com.zaxxer" level="DEBUG" additivity="false">
-			<AppenderRef ref="console" />
-		</Logger>
-		<Logger name="org.springframework" level="INFO" additivity="false">
-			<AppenderRef ref="console" />
-		</Logger>
-		<Logger name="org.zerock" level="DEBUG" additivity="false">
-			<AppenderRef ref="console" />
-		</Logger>
-
-		<Root level="INFO">
-			<AppenderRef ref="console" />
-		</Root>
-	</Loggers>
-
-
+	    <!-- org.zerock 패키지 INFO 이상 출력 -->
+	    <Logger name="org.zerock" level="INFO" additivity="false">
+	        <AppenderRef ref="Console"/>
+	    </Logger>
+	        
+	        <!-- 그 외 모든 클래스 INFO 이상 출력 -->
+	        <Root level="INFO">
+	            <AppenderRef ref="Console"/>
+	        </Root>
+    </Loggers>
 </Configuration>

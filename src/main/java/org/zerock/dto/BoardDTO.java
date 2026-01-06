@@ -7,12 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/*
- * create table board ( seq int auto_increment primary key, writer varchar(50) not null, title
- * varchar(500) not null, content text not null, hit int default 0, regdate timestamp default now(),
- * updatedate timestamp default now() on update current_timestamp, delflag boolean default false,
- * foreign key (writer) references members(id) on delete cascade);
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
