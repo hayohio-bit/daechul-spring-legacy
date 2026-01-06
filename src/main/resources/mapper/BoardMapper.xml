@@ -11,8 +11,22 @@
 	ORDER BY seq DESC
 </select>
 
-<select id="selectBoard" resultType="BoardDTO">
+<select id="selectBoard" resultType="org.zerock.dto.BoardDTO">
 	SELECT * from board WHERE bno = #{bno}
+</select>
+
+<select id="selectBoardsWithPaging" resultType="org.zerock.dto.BoardDTO">
+	SELECT seq, writer, title, content, hit, regdate, updatedate, delflag 
+	FROM board
+	WHERE delflag = false 
+	ORDER BY seq DESC 
+	LIMIT #{size} OFFSET #{skip}
+</select>
+
+<select id="countBoards" resultType="int">
+	SELECT COUNT(*)
+	FROM board
+	WHERE delflag = false
 </select>
 
 </mapper>

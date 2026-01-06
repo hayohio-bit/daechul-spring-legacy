@@ -29,5 +29,15 @@ public class BoardMapperTests {
 				log.info("첫 번째 게시글(Mapper): {}", list.get(0));
 		    }	
 	}
+	
+	@Test
+	public void selectBoard() {
+		List<BoardDTO> list = boardMapper.selectBoard(0);
+		assertNotNull(list);
+		log.info("BoardMapper selectBoard() Test : {}", list.toString());
+	}
+	
+	@Test
+	public void 
 
 }

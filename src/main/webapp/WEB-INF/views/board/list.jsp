@@ -44,7 +44,7 @@
 		</tr>
 	</thead>
 	<tbody class="tbody">
-		<c:forEach var="board" items="${boardList}">
+		<c:forEach var="board" items="${dto.dto}">
 			<tr>
 				<td><c:out value="${board.seq}" /></td>
 				<td><c:out value="${board.title }" /></td>

@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class BoardListPaginDTO {
 	
 	private List<BoardDTO> dto;
-	private int page;
+	private int page;	// 페이지 번호
 	private int size;
 	private int total;
 	private int start;
