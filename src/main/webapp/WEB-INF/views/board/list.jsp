@@ -1,58 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<style>
-.content-main {
-  padding: 16px;
-}
 
-.board-list-view {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-.board-list-view thead {
-  background-color: #f5f5f5;
-}
+<body>
+<div class="container my-4">
+  <h2 class="mb-3">Board List</h2>
 
-.board-list-view th,
-.board-list-view td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: left;
-}
+  <!-- 게시글 리스트 테이블 -->
+  <table class="table table-hover table-striped" id="boardTable">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Seq</th>
+        <th scope="col">Title</th>
+        <th scope="col">Writer</th>
+        <th scope="col">RegDate</th>
+        <th scope="col">Hit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <c:forEach var="board" items="${dto.dto}">
+        <tr>
+          <td><c:out value="${board.seq}" /></td>
+          <td>
+            <a href="<c:url value='/board/view?seq=${board.seq}' />">
+              <c:out value="${board.title}" />
+            </a>
+          </td>
+          <td><c:out value="${board.writer}" /></td>
+          <td><c:out value="${board.createdDate}" /></td>
+          <td><c:out value="${board.hit}" /></td>
+        </tr>
+      </c:forEach>
+    </tbody>
+  </table>
 
-.board-list-view tbody tr:nth-child(even) {
-  background-color: #fafafa;
-}
+  <!-- 페이지네이션 -->
+  <nav aria-label="Board pagination">
+    <ul class="pagination justify-content-center">
 
-.board-list-view tbody tr:hover {
-  background-color: #eef5ff;
-}
-</style>
+      <!-- 이전 블럭 -->
+      <c:if test="${dto.prev}">
+        <li class="page-item">
+          <a class="page-link"
+             href="?page=${dto.start - 1}&size=${dto.size}"
+             aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      </c:if>
 
-<div class="content-main">
-<table class="board-list-view" id="dataTable">
-	<thead>
-		<tr>
-			<th>seq</th>
-			<th>title</th>
-			<th>writer</th>
-			<th>regDate</th>
-			<th>hit</th>
-		</tr>
-	</thead>
-	<tbody class="tbody">
-		<c:forEach var="board" items="${dto.dto}">
-			<tr>
-				<td><c:out value="${board.seq}" /></td>
-				<td><c:out value="${board.title }" /></td>
-				<td><c:out value="${board.writer }" /></td>
-				<td><c:out value="${board.regDate }" /></td>
-				<td><c:out value="${board.hit }" /></td>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
+      <!-- 페이지 번호들 -->
+      <c:forEach var="p" items="${dto.pageNums}">
+        <li class="page-item ${p == dto.page ? 'active' : ''}">
+          <a class="page-link" href="?page=${p}&size=${dto.size}">
+            ${p}
+          </a>
+        </li>
+      </c:forEach>
+
+      <!-- 다음 블럭 -->
+      <c:if test="${dto.next}">
+        <li class="page-item">
+          <a class="page-link"
+             href="?page=${dto.end + 1}&size=${dto.size}"
+             aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </c:if>
+
+    </ul>
+  </nav>
 </div>
+</body>
+</html>

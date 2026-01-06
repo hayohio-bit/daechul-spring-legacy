@@ -10,4 +10,5 @@ public interface BoardService {
   
   BoardListPaginDTO getBoardsWithPaging(int page, int size);
 
+  
 }

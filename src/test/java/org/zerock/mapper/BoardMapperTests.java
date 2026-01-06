@@ -1,6 +1,7 @@
 package org.zerock.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -31,13 +32,17 @@ public class BoardMapperTests {
 	}
 	
 	@Test
-	public void selectBoard() {
-		List<BoardDTO> list = boardMapper.selectBoard(0);
+	public void testSelectBoardWithPaging() {
+		List<BoardDTO> list = boardMapper.selectBoardsWithPaging(0, 10);
 		assertNotNull(list);
-		log.info("BoardMapper selectBoard() Test : {}", list.toString());
+		log.info("페이징 조회 결과 개수: {}", list.size());
 	}
 	
 	@Test
-	public void 
+	public void testCountBoards() {
+		int total = boardMapper.countBoards();
+		log.info("총 게시글 수: {}", total);
+		assertTrue(total >= 0);
+	}
 
 }
