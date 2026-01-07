@@ -47,5 +47,9 @@
 	VALUES (#{writer}, #{title}, #{content}, 0, NOW())
 </insert>
 
+<update id="boardModify">
+	UPDATE 
+</update>
+
 
 </mapper>

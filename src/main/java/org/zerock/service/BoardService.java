@@ -16,6 +16,8 @@ public interface BoardService {
 
   void write(BoardDTO boardDTO);
 
+  void modify(BoardDTO boardDTO);
+
 
   
   

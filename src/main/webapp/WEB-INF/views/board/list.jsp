@@ -28,7 +28,7 @@
         <tr>
           <td><c:out value="${board.seq}" /></td>
           <td>
-            <a href="<c:url value='/board/view?seq=${board.seq}' />">
+            <a href="<c:url value='/board/view/${board.seq}' />">
               <c:out value="${board.title}" />
             </a>
           </td>

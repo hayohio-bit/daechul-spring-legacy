@@ -93,7 +93,12 @@ public class BoardServiceImpl implements BoardService {
   public void write(BoardDTO boardDTO) {
 	  log.info("write :" + boardDTO);
 	  boardMapper.boardWrite(boardDTO);
-	  
+  }
+  
+  
+  @Override
+  public void modify(BoardDTO boardDTO) {
+	  boardMapper.boardModify(boardDTO);
   }
   
   

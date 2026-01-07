@@ -19,4 +19,6 @@ public interface BoardMapper {
 
   void boardWrite(BoardDTO boardDTO);
 
+  void boardModify(BoardDTO boardDTO);
+
 }

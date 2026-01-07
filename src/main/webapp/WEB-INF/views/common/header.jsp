@@ -26,8 +26,8 @@
 	
 	<div class="navbar">
 		<div class="container">
-			<a href="">Home</a>
-			<a href="">Board</a>
+			<a href="/board/list">Home</a>
+			<a href="/">Board</a>
 		</div>	
 	</div>
 </body>

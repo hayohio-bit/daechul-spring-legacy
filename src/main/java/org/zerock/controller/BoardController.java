@@ -52,8 +52,24 @@ public class BoardController {
 
   @PostMapping("/write")
   public String write(BoardDTO boardDTO) {
+	  boardDTO.setWriter("test");  // 존재하는 ID로 강제 설정★★★★나중에삭제★★★★★
 	  log.info("BoardDTO: " + boardDTO);
 	  boardService.write(boardDTO);
+	  return "redirect:/board/list";
+  }
+  
+  @GetMapping("/modify")
+  public String modifyGet(@PathVariable("seq") int seq, Model model) {
+	  log.info("board modify get");
+	  BoardDTO boardDTO = boardService.getOneBySeq(seq);
+	  model.addAttribute("dto", boardDTO);
+	  return "board/modify";
+	  
+  }
+  
+  @PostMapping("/modify")
+  public String modify(BoardDTO boardDTO) {
+	  boardService.modify(boardDTO);
 	  return "redirect:/board/list";
   }
 
