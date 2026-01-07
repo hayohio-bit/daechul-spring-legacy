@@ -10,5 +10,13 @@ public interface BoardService {
   
   BoardListPaginDTO getBoardsWithPaging(int page, int size);
 
+  BoardDTO getOneBySeq(int seq);
+
+  BoardDTO getWithHitCount(int seq);
+
+  void write(BoardDTO boardDTO);
+
+
+  
   
 }

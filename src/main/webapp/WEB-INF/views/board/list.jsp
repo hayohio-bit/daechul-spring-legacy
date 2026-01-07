@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
@@ -8,6 +8,10 @@
 <div class="container my-4">
   <h2 class="mb-3">Board List</h2>
 
+  <div class="board-header mb-3">
+  	<a href="/board/write" class="btn btn-primary">게시물 등록</a>
+  </div>
+	
   <!-- 게시글 리스트 테이블 -->
   <table class="table table-hover table-striped" id="boardTable">
     <thead class="table-light">
@@ -75,4 +79,3 @@
   </nav>
 </div>
 </body>
-</html>

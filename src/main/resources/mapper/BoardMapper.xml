@@ -29,4 +29,23 @@
 	WHERE delflag = false
 </select>
 
+<select id="selectOneBySeq" resultType="org.zerock.dto.BoardDTO">
+	SELECT * FROM board
+	WHERE seq = #{seq}
+	AND delFlag = 0
+</select>
+
+<update id="updateHitCount" parameterType="int">
+	UPDATE board
+	SET hit= hit + 1
+	WHERE seq = #{seq}
+	AND delFlag = 0
+</update>
+
+<insert id="boardWrite" parameterType="org.zerock.dto.BoardDTO">
+	INSERT INTO board (writer, title, content, hit, regDate)
+	VALUES (#{writer}, #{title}, #{content}, 0, NOW())
+</insert>
+
+
 </mapper>

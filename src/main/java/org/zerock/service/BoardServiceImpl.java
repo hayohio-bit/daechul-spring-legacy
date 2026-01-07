@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.dto.BoardDTO;
 import org.zerock.dto.BoardListPaginDTO;
 import org.zerock.mapper.BoardMapper;
@@ -17,10 +18,12 @@ public class BoardServiceImpl implements BoardService {
 
   private final BoardMapper boardMapper;
 
+  
   @Override
   public List<BoardDTO> getBoardList() {
 	return boardMapper.selectBoardList();
   }
+  
   
   @Override
   public BoardListPaginDTO getBoardsWithPaging(int page, int size) {
@@ -63,6 +66,35 @@ public class BoardServiceImpl implements BoardService {
 			  .build();
   }
 
+  
+  @Override
+  public BoardDTO getOneBySeq(int seq) {
+	  return boardMapper.selectOneBySeq(seq);
+  }
+  
+  
+  @Override
+  @Transactional
+  public BoardDTO getWithHitCount(int seq) {
+	  // 1. 먼저 조회
+	  BoardDTO boardDTO = boardMapper.selectOneBySeq(seq);
+	  if (boardDTO == null) return null;
+	  
+	  // 2. 조회수 증가
+	  boardMapper.updateHitCount(seq);
+	  
+	  // 3. 증가된 데이터 재조회 (캐시 무효화 방지)
+	  return boardMapper.selectOneBySeq(seq);
+  }
 
-
+  
+  @Override
+  @Transactional
+  public void write(BoardDTO boardDTO) {
+	  log.info("write :" + boardDTO);
+	  boardMapper.boardWrite(boardDTO);
+	  
+  }
+  
+  
 }

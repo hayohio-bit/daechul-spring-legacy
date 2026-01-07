@@ -7,9 +7,16 @@ public interface BoardMapper {
 
   List<BoardDTO> selectBoardList();
   
-  BoardDTO selectBoard(int bno);
+  BoardDTO selectBoard(int seq);
 
   List<BoardDTO> selectBoardsWithPaging(int skip, int size);
 
   int countBoards();
+
+  BoardDTO selectOneBySeq(int seq);
+
+  void updateHitCount(int seq);
+
+  void boardWrite(BoardDTO boardDTO);
+
 }
