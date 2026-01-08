@@ -25,6 +25,7 @@
 	
 	<!-- 정적 리소스 매핑 (/resources/**) -->
 	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/images/" mapping="/images/**" />
 	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
 	
 	<!-- Controller 스캔 (org.zerock.controller) -->

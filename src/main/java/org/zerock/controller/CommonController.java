@@ -12,8 +12,8 @@ public class CommonController {
 
     @GetMapping("/")
     public String index() {
-        log.info("redirect to /board/list");
-        return "redirect:/board/list";
+        log.info("home view");
+        return "home";
     }
 
     @GetMapping("/accessError")

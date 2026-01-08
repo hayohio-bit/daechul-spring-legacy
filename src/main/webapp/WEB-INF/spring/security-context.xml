@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-	<bean id="customUserDetailsService" class="org.zerock.security.CustomUserDetailsService" />
+	<!-- customUserDetailsService is now handled by @Service in the class -->
 
 	<security:http request-matcher="ant">
 		<!-- Public Access -->

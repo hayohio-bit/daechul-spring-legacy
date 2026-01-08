@@ -6,10 +6,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.zerock.dto.MemberDTO;
-import lombok.Getter;
 
-@Getter
 public class CustomUser extends User {
+
+    public MemberDTO getMember() {
+        return member;
+    }
 
     private static final long serialVersionUID = 1L;
 
