@@ -1,81 +1,77 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ include file="../includes/header.jsp" %>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h2 style="margin: 0;">게시판 목록</h2>
+                <sec:authorize access="isAuthenticated()">
+                    <a href="/board/register" class="btn btn-primary">글쓰기</a>
+                </sec:authorize>
+            </div>
 
-<body>
-<div class="container my-4">
-  <h2 class="mb-3">Board List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">번호</th>
+                        <th>제목</th>
+                        <th style="width: 150px;">작성자</th>
+                        <th style="width: 150px;">작성일</th>
+                        <th style="width: 80px;">조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${list}" var="board">
+                        <tr>
+                            <td>${board.seq}</td>
+                            <td>
+                                <a href='/board/get?seq=<c:out value="${board.seq}"/>&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}'
+                                    style="text-decoration: none; color: inherit; font-weight: 500;">
+                                    <c:out value="${board.title}" />
+                                    <c:if test="${board.replyCnt > 0}">
+                                        <span
+                                            style="color: var(--primary-color); font-size: 0.8em; margin-left: 4px;">[${board.replyCnt}]</span>
+                                    </c:if>
+                                </a>
+                            </td>
+                            <td>
+                                <c:out value="${board.writer}" />
+                            </td>
+                            <td>
+                                <c:out value="${board.getCreatedDate()}" />
+                            </td>
+                            <td>${board.hit}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
 
-  <div class="board-header mb-3">
-  	<a href="/board/write" class="btn btn-primary">게시물 등록</a>
-  </div>
-	
-  <!-- 게시글 리스트 테이블 -->
-  <table class="table table-hover table-striped" id="boardTable">
-    <thead class="table-light">
-      <tr>
-        <th scope="col">Seq</th>
-        <th scope="col">Title</th>
-        <th scope="col">Writer</th>
-        <th scope="col">RegDate</th>
-        <th scope="col">Hit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach var="board" items="${dto.dto}">
-        <tr>
-          <td><c:out value="${board.seq}" /></td>
-          <td>
-            <a href="<c:url value='/board/view/${board.seq}' />">
-              <c:out value="${board.title}" />
-            </a>
-          </td>
-          <td><c:out value="${board.writer}" /></td>
-          <td><c:out value="${board.createdDate}" /></td>
-          <td><c:out value="${board.hit}" /></td>
-        </tr>
-      </c:forEach>
-    </tbody>
-  </table>
+            <!-- Pagination -->
+            <div class="pagination">
+                <c:if test="${pageMaker.prev}">
+                    <a href="/board/list?pageNum=${pageMaker.startPage - 1}&amount=${pageMaker.cri.amount}"
+                        class="pagination-item">이전</a>
+                </c:if>
 
-  <!-- 페이지네이션 -->
-  <nav aria-label="Board pagination">
-    <ul class="pagination justify-content-center">
+                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                    <a href="/board/list?pageNum=${num}&amount=${pageMaker.cri.amount}"
+                        class="pagination-item ${pageMaker.cri.pageNum == num ? 'active' : ''}">${num}</a>
+                </c:forEach>
 
-      <!-- 이전 블럭 -->
-      <c:if test="${dto.prev}">
-        <li class="page-item">
-          <a class="page-link"
-             href="?page=${dto.start - 1}&size=${dto.size}"
-             aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-      </c:if>
+                <c:if test="${pageMaker.next}">
+                    <a href="/board/list?pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.cri.amount}"
+                        class="pagination-item">다음</a>
+                </c:if>
+            </div>
+        </div>
 
-      <!-- 페이지 번호들 -->
-      <c:forEach var="p" items="${dto.pageNums}">
-        <li class="page-item ${p == dto.page ? 'active' : ''}">
-          <a class="page-link" href="?page=${p}&size=${dto.size}">
-            ${p}
-          </a>
-        </li>
-      </c:forEach>
+        <script>
+            $(document).ready(function () {
+                var result = '<c:out value="${result}"/>';
+                if (result != '' && history.state == null) {
+                    alert("처리가 완료되었습니다.");
+                }
+                history.replaceState({}, null, null);
+            });
+        </script>
 
-      <!-- 다음 블럭 -->
-      <c:if test="${dto.next}">
-        <li class="page-item">
-          <a class="page-link"
-             href="?page=${dto.end + 1}&size=${dto.size}"
-             aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </c:if>
-
-    </ul>
-  </nav>
-</div>
-</body>
+        <%@ include file="../includes/footer.jsp" %>

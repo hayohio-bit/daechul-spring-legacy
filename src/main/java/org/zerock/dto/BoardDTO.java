@@ -18,12 +18,14 @@ public class BoardDTO {
   private String title;
   private String content;
   private int hit;
-  private LocalDateTime regDate;
-  private LocalDateTime updateDate;
+  private LocalDateTime regdate;
+  private LocalDateTime updatedate;
   private boolean delflag;
 
+  private int replyCnt;
+
   public String getCreatedDate() {
-    return regDate == null ? "" : regDate.format(DateTimeFormatter.ISO_DATE);
+    return regdate == null ? "" : regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
   }
 
 }

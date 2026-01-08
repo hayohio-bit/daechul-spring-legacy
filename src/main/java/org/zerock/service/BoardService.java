@@ -2,23 +2,19 @@ package org.zerock.service;
 
 import java.util.List;
 import org.zerock.dto.BoardDTO;
-import org.zerock.dto.BoardListPaginDTO;
+import org.zerock.dto.Criteria;
 
 public interface BoardService {
 
-  List<BoardDTO> getBoardList();
-  
-  BoardListPaginDTO getBoardsWithPaging(int page, int size);
+  public void register(BoardDTO board);
 
-  BoardDTO getOneBySeq(int seq);
+  public BoardDTO get(int bno);
 
-  BoardDTO getWithHitCount(int seq);
+  public boolean modify(BoardDTO board);
 
-  void write(BoardDTO boardDTO);
+  public boolean remove(int bno);
 
-  void modify(BoardDTO boardDTO);
+  public List<BoardDTO> getList(Criteria cri);
 
-
-  
-  
+  public int getTotal(Criteria cri);
 }

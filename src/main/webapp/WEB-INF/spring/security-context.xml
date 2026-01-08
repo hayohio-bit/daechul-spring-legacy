@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<bean id="customUserDetailsService" class="org.zerock.security.CustomUserDetailsService" />
+
+	<security:http request-matcher="ant">
+		<!-- Public Access -->
+		<security:intercept-url pattern="/resources/**" access="permitAll()" />
+		<security:intercept-url pattern="/customLogin" access="permitAll()" />
+		<security:intercept-url pattern="/member/join" access="permitAll()" />
+		<security:intercept-url pattern="/board/list" access="permitAll()" />
+		<security:intercept-url pattern="/board/get" access="permitAll()" />
+		<security:intercept-url pattern="/" access="permitAll()" />
+
+		<!-- Protected Routes -->
+		<security:intercept-url pattern="/board/register" access="isAuthenticated()" />
+		<security:intercept-url pattern="/board/modify" access="isAuthenticated()" />
+		<security:intercept-url pattern="/board/remove" access="isAuthenticated()" />
+		<security:intercept-url pattern="/member/update" access="isAuthenticated()" />
+		
+		<!-- Catch-all for other public resources (prevents redirect loops for 404s/favicons) -->
+		<security:intercept-url pattern="/**" access="permitAll()" />
+		
+		<security:form-login login-page="/customLogin" />
+		<security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me,JSESSION_ID" />
+		
+		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+		
+		<security:csrf disabled="false"/>
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="customUserDetailsService">
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>

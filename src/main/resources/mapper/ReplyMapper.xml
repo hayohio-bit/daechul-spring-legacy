@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.ReplyMapper">
+
+  <resultMap type="org.zerock.dto.ReplyDTO" id="replyMap">
+    <id property="rno" column="rno"/>
+    <result property="bno" column="bno"/>
+    <result property="replyText" column="replyText"/>
+    <result property="replyer" column="replyer"/>
+    <result property="replydate" column="replydate"/>
+    <result property="updatedate" column="updatedate"/>
+  </resultMap>
+
+  <insert id="insert">
+    INSERT INTO reply (bno, replyText, replyer)
+    VALUES (#{bno}, #{replyText}, #{replyer})
+  </insert>
+
+  <select id="read" resultMap="replyMap">
+    SELECT * FROM reply WHERE rno = #{rno}
+  </select>
+
+  <delete id="delete">
+    DELETE FROM reply WHERE rno = #{rno}
+  </delete>
+
+  <update id="update">
+    UPDATE reply SET replyText = #{replyText}, updatedate = NOW() WHERE rno = #{rno}
+  </update>
+
+  <select id="getListWithPaging" resultMap="replyMap">
+    SELECT * FROM reply
+    WHERE bno = #{bno}
+    ORDER BY rno ASC
+    LIMIT #{cri.skip}, #{cri.amount}
+  </select>
+
+  <select id="getCountByBno" resultType="int">
+    SELECT COUNT(*) FROM reply WHERE bno = #{bno}
+  </select>
+
+</mapper>

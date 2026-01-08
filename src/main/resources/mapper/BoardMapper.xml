@@ -4,52 +4,61 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.BoardMapper">
 
-<select id="selectBoardList" resultType="org.zerock.dto.BoardDTO">
-	SELECT seq, writer, title, content, hit, regdate, updatedate, delflag 
-	FROM board
-	WHERE delflag = false
-	ORDER BY seq DESC
-</select>
+  <select id="getList" resultType="org.zerock.dto.BoardDTO">
+    <![CDATA[
+    SELECT * FROM board WHERE seq > 0 AND delflag = false ORDER BY seq DESC
+    ]]>
+  </select>
 
-<select id="selectBoard" resultType="org.zerock.dto.BoardDTO">
-	SELECT * from board WHERE bno = #{bno}
-</select>
+  <select id="getListWithPaging" resultType="org.zerock.dto.BoardDTO">
+    <![CDATA[
+    SELECT * 
+    FROM board 
+    WHERE delflag = false
+    ORDER BY seq DESC
+    LIMIT #{skip}, #{amount}
+    ]]>
+  </select>
 
-<select id="selectBoardsWithPaging" resultType="org.zerock.dto.BoardDTO">
-	SELECT seq, writer, title, content, hit, regdate, updatedate, delflag 
-	FROM board
-	WHERE delflag = false 
-	ORDER BY seq DESC 
-	LIMIT #{size} OFFSET #{skip}
-</select>
+  <insert id="insert">
+    INSERT INTO board (writer, title, content)
+    VALUES (#{writer}, #{title}, #{content})
+  </insert>
 
-<select id="countBoards" resultType="int">
-	SELECT COUNT(*)
-	FROM board
-	WHERE delflag = false
-</select>
+  <insert id="insertSelectKey">
+    <selectKey keyProperty="seq" order="AFTER" resultType="int">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO board (writer, title, content)
+    VALUES (#{writer}, #{title}, #{content})
+  </insert>
 
-<select id="selectOneBySeq" resultType="org.zerock.dto.BoardDTO">
-	SELECT * FROM board
-	WHERE seq = #{seq}
-	AND delFlag = 0
-</select>
+  <select id="read" resultType="org.zerock.dto.BoardDTO">
+    SELECT * FROM board WHERE seq = #{seq}
+  </select>
 
-<update id="updateHitCount" parameterType="int">
-	UPDATE board
-	SET hit= hit + 1
-	WHERE seq = #{seq}
-	AND delFlag = 0
-</update>
+  <delete id="delete">
+    UPDATE board SET delflag = true WHERE seq = #{seq}
+  </delete>
 
-<insert id="boardWrite" parameterType="org.zerock.dto.BoardDTO">
-	INSERT INTO board (writer, title, content, hit, regDate)
-	VALUES (#{writer}, #{title}, #{content}, 0, NOW())
-</insert>
+  <update id="update">
+    UPDATE board 
+    SET title = #{title},
+        content = #{content},
+        updatedate = NOW()
+    WHERE seq = #{seq}
+  </update>
 
-<update id="boardModify">
-	UPDATE 
-</update>
+  <select id="getTotalCount" resultType="int">
+    SELECT COUNT(*) FROM board WHERE seq > 0 AND delflag = false
+  </select>
 
+  <update id="updateReplyCnt">
+    UPDATE board SET replyCnt = replyCnt + #{amount} WHERE seq = #{bno}
+  </update>
+  
+  <update id="updateHit">
+    UPDATE board SET hit = hit + 1 WHERE seq = #{seq}
+  </update>
 
 </mapper>

@@ -11,19 +11,33 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!-- ContextLoaderListener : DB, Service, Security 같은 비웹 계층 빈(root-context.xml)을 서버 시작 시 로드 -->
-	<!-- DispatcherServlet : Controller, View 관련 빈(servlet-context.xml)을 서블릿 초기화 시 로드 -->
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/security-context.xml
+		</param-value>
 	</context-param>
-	<!-- contextConfigLocation 파라미터 : ContextLoaderListener가 param-value 경로를 읽도록 지시 -->
-	<!-- Spring Ioc(Inversion of Controll, 제어의 역전) 컨테이너를 설정하는 핵심 파일 -->
 
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
-  	<!-- 2. Spring Security 필터 (인증/인가 먼저 처리) -->
-	<!-- <filter>
+	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>	
@@ -32,7 +46,6 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
- -->
 
   	<!-- 3. DispatcherServlet (MVC Controller, View) -->
 	<servlet>
@@ -57,7 +70,6 @@
 	</servlet-mapping>
 
 	
-	<!-- 4. 기본 페이지 설정 (http://localhost:8080/ 접근 시) -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
   	</welcome-file-list>

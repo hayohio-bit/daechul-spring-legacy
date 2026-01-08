@@ -23,6 +23,10 @@
 	<context:component-scan
 		base-package="org.zerock.service,org.zerock.security,org.zerock.aop" />
 
+	<!-- Spring Security 6 MVC Introspector & Expression Handler -->
+	<bean id="mvcHandlerMappingIntrospector" class="org.springframework.web.servlet.handler.HandlerMappingIntrospector"/>
+	<bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
+
 
 	<!-- HikariCP 설정 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
