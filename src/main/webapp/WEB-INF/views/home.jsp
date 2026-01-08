@@ -153,25 +153,33 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 1rem;
-                /* Use gap instead of space-between for better control */
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                /* Allow wrapping if absolutely necessary on smaller screens */
+                gap: 0.75rem;
+                /* Reduced gap */
+                margin-top: 2rem;
+                flex-wrap: nowrap;
+                /* Force single line */
             }
 
             .flow-node {
                 background: var(--glass-bg);
                 border: 2px solid var(--accent);
-                /* Slightly thicker border for clarity */
-                padding: 0.75rem 1rem;
-                border-radius: 0.75rem;
+                padding: 0.6rem 0.8rem;
+                /* Reduced padding */
+                border-radius: 0.6rem;
                 font-weight: 700;
-                min-width: 100px;
-                /* Reduced min-width to prevent overflow */
-                font-size: 0.9rem;
-                /* Slightly smaller font */
-                box-shadow: 0 4px 15px rgba(129, 140, 248, 0.2);
+                min-width: fit-content;
+                /* Allow fitting content */
+                font-size: 0.85rem;
+                /* Slightly smaller font to ensure fit */
+                box-shadow: 0 4px 15px rgba(129, 140, 248, 0.15);
+                transition: all 0.3s ease;
+                white-space: nowrap;
+                /* Prevent text wrapping inside node */
+            }
+
+            .flow-node:hover {
+                background: rgba(129, 140, 248, 0.1);
+                transform: translateY(-3px);
             }
 
             .flow-arrow {
@@ -238,27 +246,27 @@
                         <div class="slide-content">
                             <div class="slide-header">
                                 <h2 class="p-title" data-swiper-parallax="-300">프로젝트 개요</h2>
-                                <p class="p-subtitle" data-swiper-parallax="-200">DC-SF Spring Legacy Migration Project
+                                <p class="p-subtitle" data-swiper-parallax="-200">DC Spring Legacy Migration Project
                                 </p>
                             </div>
                             <div class="slide-body" data-swiper-parallax="-100">
                                 <div class="about-box">
                                     <div class="about-text">
-                                        <p>본 프로젝트는 기존의 JSP/Servlet 기반 레거시 시스템을 최신 Spring Framework 6 아키텍처로 마이그레이션한
-                                            사례입니다. 코드의 결합도를 낮추고 유지보수성을 극대화하며, 최신 보안 표준을 적용하여 견고한 애플리케이션 프레임워크를 구축하는 것을
-                                            핵심 목표로 합니다.</p>
+                                        <p>본 프로젝트는 JSP/Servlet Model 2 기반의 레거시(daechul-project)를 Spring Framework
+                                            환경으로 마이그레이션한 프로젝트입니다. IoC/DI 컨테이너와 AOP를 도입하여 객체 간 결합도를 낮추고, Spring Security를
+                                            통합하여 URL 레벨 제어 및 어노테이션 기반(@PreAuthorize)의 세밀한 권한 관리를 구현하였습니다.</p>
                                         <div class="info-grid">
                                             <div class="info-item">
                                                 <h5>현대화 (Modernization)</h5>
-                                                <p>Java 21 및 Spring 6 기반의 최신 환경 구축</p>
+                                                <p>Spring 6 요구사항 충족을 위한 Java 21 및 Jakarta EE 최신 스펙 적용</p>
                                             </div>
                                             <div class="info-item">
                                                 <h5>보안 강화 (Security)</h5>
-                                                <p>Spring Security 6를 통한 체계적인 인증/인가</p>
+                                                <p>Spring Security 6 기반 인증/인가, CSRF 토큰, BCrypt 암호화</p>
                                             </div>
                                             <div class="info-item">
-                                                <h5>최적화 (Optimization)</h5>
-                                                <p>MyBatis 및 HikariCP를 활용한 효율적 데이터 처리</p>
+                                                <h5>퍼시스턴스 최적화 (Data)</h5>
+                                                <p>MyBatis 선언적 매핑, HikariCP 커넥션 풀, 트랜잭션 관리</p>
                                             </div>
                                         </div>
                                     </div>
@@ -272,27 +280,26 @@
                         <div class="slide-content">
                             <div class="slide-header">
                                 <h2 class="p-title" data-swiper-parallax="-300">마이그레이션 전후 비교</h2>
-                                <p class="p-subtitle" data-swiper-parallax="-200">Architecture & Performance
-                                    Transformation</p>
+                                <p class="p-subtitle" data-swiper-parallax="-200">Legacy Servlet to Spring MVC</p>
                             </div>
                             <div class="slide-body" data-swiper-parallax="-100">
                                 <div class="comp-box">
                                     <div class="comp-card">
                                         <h4>Legacy (Before)</h4>
                                         <ul class="comp-list">
-                                            <li>JSP / Servlet 중심의 강한 결합</li>
-                                            <li>JDBC 사용으로 인한 반복적 코드</li>
-                                            <li>수동적인 트랜잭션 관리 및 보안</li>
-                                            <li>스파게티 코드로 인한 유지보수 어려움</li>
+                                            <li>수동 ActionFactory 기반의 Command 패턴</li>
+                                            <li>JDBC 직접 호출 및 반복적인 자원 해제 코드</li>
+                                            <li>Servlet 내 강한 결합도(Hard Coupling)</li>
+                                            <li>보안 및 트랜잭션의 수동 관리</li>
                                         </ul>
                                     </div>
                                     <div class="comp-card" style="border-color: var(--accent);">
                                         <h4>Spring 6 (After)</h4>
                                         <ul class="comp-list">
-                                            <li>Layered Architecture (관심사 분리)</li>
-                                            <li>MyBatis를 통한 선언적 SQL 매핑</li>
-                                            <li>Annotation 기반의 자동 설정 및 보안</li>
-                                            <li>높은 확장성과 재사용 가능한 컴포넌트</li>
+                                            <li>DispatcherServlet 기반의 Front Controller 패턴(중앙화)</li>
+                                            <li>MyBatis(@Mapper)를 통한 선언적 SQL 매핑</li>
+                                            <li>DI(의존성 주입)를 통한 느슨한 결합도(Loose Coupling)</li>
+                                            <li>AOP 기반의 선언적 트랜잭션(@Transactional) 처리</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -305,14 +312,14 @@
                         <div class="slide-content">
                             <div class="slide-header">
                                 <h2 class="p-title" data-swiper-parallax="-300">프로젝트 구조 및 역할</h2>
-                                <p class="p-subtitle" data-swiper-parallax="-200">Structured Package & Responsibility
+                                <p class="p-subtitle" data-swiper-parallax="-200">Layered Architecture & Components
                                 </p>
                             </div>
                             <div class="slide-body" data-swiper-parallax="-100">
                                 <div class="info-grid">
                                     <div class="info-item">
                                         <h5>Controller</h5>
-                                        <p><strong>org.zerock.controller</strong><br>사용자 요청 매핑, Model 객체 관리, View
+                                        <p><strong>org.zerock.controller</strong><br>요청 URL 매핑, Model 객체 관리, View
                                             반환(JSP)</p>
                                     </div>
                                     <div class="info-item">
@@ -321,13 +328,12 @@
                                     </div>
                                     <div class="info-item">
                                         <h5>Mapper</h5>
-                                        <p><strong>org.zerock.mapper</strong><br>MyBatis 기반 SQL 연동, 데이터베이스 CRUD 인터페이스
-                                        </p>
+                                        <p><strong>org.zerock.mapper</strong><br>MyBatis SQL 인터페이스, DB CRUD 연동</p>
                                     </div>
                                     <div class="info-item">
                                         <h5>DTO / Domain</h5>
-                                        <p><strong>org.zerock.dto / domain</strong><br>계층 간 데이터 전송(Data Transfer Object)
-                                            및 도메인 객체</p>
+                                        <p><strong>org.zerock.dto / domain</strong><br>계층 간 데이터 교환을 위한 객체 (Lombok @Data
+                                            사용)</p>
                                     </div>
                                     <div class="info-item">
                                         <h5>Security</h5>
@@ -336,8 +342,8 @@
                                     </div>
                                     <div class="info-item">
                                         <h5>Resources</h5>
-                                        <p><strong>src/main/resources</strong><br>log4j2.xml, MyBatis XML Mapper,
-                                            Context 설정</p>
+                                        <p><strong>src/main/resources</strong><br>log4j2.xml, MyBatis Config, Mapper XML
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -349,13 +355,17 @@
                         <div class="slide-content">
                             <div class="slide-header">
                                 <h2 class="p-title" data-swiper-parallax="-300">상호관계 지표화</h2>
-                                <p class="p-subtitle" data-swiper-parallax="-200">Component Interaction & Flow</p>
+                                <p class="p-subtitle" data-swiper-parallax="-200">Request Processing Flow & Dependency
+                                    Injection</p>
                             </div>
                             <div class="slide-body" data-swiper-parallax="-100">
-                                <p style="text-align: left; color: var(--text-dim); margin-bottom: 2rem;">각 레이어는 인터페이스를
-                                    통해 느슨하게 연결(Loosely Coupled)되어 있으며, Dependency Injection을 통해 의존성이 주입됩니다.</p>
+                                <p style="text-align: left; color: var(--text-dim); margin-bottom: 2rem;">
+                                    DispatcherServlet이 모든 HTTP 요청을 중앙에서 받아 적절한 Controller로 위임하며, Service와 Mapper를 거쳐 DB
+                                    결과가 DTO로 변환되어 반환됩니다.</p>
                                 <div class="flow-container">
                                     <div class="flow-node">Browser (JSP)</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node">DispatcherServlet</div>
                                     <div class="flow-arrow">→</div>
                                     <div class="flow-node">Controller</div>
                                     <div class="flow-arrow">→</div>
@@ -393,7 +403,7 @@
                                 <div class="info-grid">
                                     <div class="info-item">
                                         <h5>게시판 (Board)</h5>
-                                        <p>CRUD 기능, 페이징 처리, 조회수 증가, 게시글 검색 기능</p>
+                                        <p>CRUD 기능, 페이징 처리, 조회수 증가</p>
                                     </div>
                                     <div class="info-item">
                                         <h5>댓글 (Reply)</h5>
@@ -401,7 +411,7 @@
                                     </div>
                                     <div class="info-item">
                                         <h5>회원 (Member)</h5>
-                                        <p>회원가입, 중복 체크, 회원 정보 수정, 회원 등급 관리</p>
+                                        <p>회원가입, 중복 체크, 회원 정보 수정</p>
                                     </div>
                                     <div class="info-item">
                                         <h5>인증 (Auth)</h5>
@@ -409,11 +419,7 @@
                                     </div>
                                     <div class="info-item">
                                         <h5>권한 (Permission)</h5>
-                                        <p>게시글 작성자 본인 확인(AOP), 페이지별 접근 제한</p>
-                                    </div>
-                                    <div class="info-item">
-                                        <h5>파일 (Upload)</h5>
-                                        <p>멀티파트 파일 업로드 및 서버 저장 처리 (확장 예정)</p>
+                                        <p>게시글 작성자 본인 확인(AOP)</p>
                                     </div>
                                 </div>
                             </div>
@@ -425,20 +431,20 @@
                         <div class="slide-content">
                             <div class="slide-header">
                                 <h2 class="p-title" data-swiper-parallax="-300">프로젝트 회고 및 소개</h2>
-                                <p class="p-subtitle" data-swiper-parallax="-200">Retrospective & Contactor</p>
+                                <p class="p-subtitle" data-swiper-parallax="-200">Retrospective & Contact</p>
                             </div>
                             <div class="slide-body" data-swiper-parallax="-100">
                                 <div class="about-box">
                                     <div class="about-text">
-                                        <h3>"Legacy에서 Modern으로의 여정"</h3>
-                                        <p>레거시 코드의 복잡성을 해결하고 현대적인 웹 아키텍처로의 전환 과정을 통해 객체지향 설계와 프레임워크의 핵심 원리를 깊이 있게 이해할 수
-                                            있었습니다. 특히 스프링 시큐리티를 통한 보안 프로세스와 MyBatis의 유연한 SQL 관리 방식을 경험하며 탄탄한 백엔드 개발 역량을
-                                            쌓았습니다.</p>
+                                        <h3>"스프링의 핵심 원리를 관통하다"</h3>
+                                        <p>단순한 코드 변환을 넘어, Servlet/JSP의 한계점을 스프링 프레임워크가 어떻게 해결하는지 체득했습니다. 의존성 주입(DI)과 관점
+                                            지향 프로그래밍(AOP)을 직접 구현하며 백엔드 아키텍처에 대한 깊이 있는 이해를 갖추게 되었습니다.
+                                        </p>
                                         <div class="profile-info">
-                                            <span><strong>성함:</strong> 신대철</span>
+                                            <span><strong>성함:</strong> 선하영 </span>
                                             <span><strong>GitHub:</strong> <a href="https://github.com/hayohio-bit"
-                                                    target="_blank">github.com/hayohio-bit/daechul-spring-legacy</a></span>
-                                            <span><strong>프로젝트 기간:</strong> 2026.01 - 2026.02</span>
+                                                    target="_blank">/daechul-spring-legacy.git</a></span>
+                                            <span><strong>프로젝트 기간:</strong> 2025.12.31 - 2026.06.07</span>
                                         </div>
                                     </div>
                                 </div>

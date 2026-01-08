@@ -107,8 +107,16 @@
 
                 // Add Reply
                 $("#addReplyBtn").on("click", function (e) {
+                    var replyText = $("#replyText").val().trim();
+
+                    if (!replyText) {
+                        alert("댓글 내용을 입력해주세요.");
+                        $("#replyText").focus();
+                        return;
+                    }
+
                     var reply = {
-                        replyText: $("#replyText").val(),
+                        replyText: replyText,
                         replyer: replyer,
                         bno: bnoValue
                     };
