@@ -244,7 +244,6 @@
                 z-index: 5;
                 filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
                 animation: floating 3s ease-in-out infinite;
-                opacity: 0.8;
             }
 
             @keyframes floating {
@@ -270,8 +269,6 @@
                     <div class="swiper-slide">
                         <div class="slide-content">
                             <div class="slide-header">
-                                <img src="/resources/img/lego-crab-2.png" class="deco-img"
-                                    style="width: 180px; top: -50px; right: -30px; transform: rotate(10deg);" />
                                 <h2 class="p-title" data-swiper-parallax="-300">프로젝트 개요</h2>
                                 <p class="p-subtitle" data-swiper-parallax="-200">DC Spring Legacy Migration Project
                                 </p>
@@ -343,8 +340,6 @@
                                 </p>
                             </div>
                             <div class="slide-body" data-swiper-parallax="-100">
-                                <img src="/resources/img/lego-crab-2.png" class="deco-img"
-                                    style="width: 130px; top: 0px; right: 0px; opacity: 0.4;" />
                                 <div class="info-grid">
                                     <div class="info-item">
                                         <h5>Controller</h5>
@@ -403,8 +398,6 @@
                                     <div class="flow-node">Mapper</div>
                                     <div class="flow-arrow">→</div>
                                     <div class="flow-node">MySQL DB</div>
-                                    <img src="/resources/img/lego-crab-1.png" class="deco-img"
-                                        style="width: 140px; bottom: -20px; right: -40px; opacity: 0.5;" />
                                 </div>
                                 <div class="info-grid-compact"
                                     style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
@@ -478,8 +471,6 @@
                                                     target="_blank">/daechul-spring-legacy.git</a></span>
                                             <span><strong>프로젝트 기간:</strong> 2025.12.31 - 2026.01.07</span>
                                         </div>
-                                        <img src="/resources/img/lego-crab-1.png" class="deco-img"
-                                            style="width: 220px; bottom: -20px; left: -100px; transform: scaleX(-1);" />
                                     </div>
                                 </div>
                             </div>
@@ -492,6 +483,9 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
+            <!-- Global Decoration -->
+            <img src="/resources/img/lego-crab-2.png" class="deco-img"
+                style="width: 200px; bottom: -40px; right: 20px; z-index: 20;" />
         </div>
 
         <div style="margin-top: 2rem; text-align: center;">
