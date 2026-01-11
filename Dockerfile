@@ -1,5 +1,5 @@
 # 1. 서버 환경 설정 (Tomcat 10.1 + Java 21)
-# Spring 6 프로젝트는 Jakarta EE 10 지원을 위해 Tomcat 10.1 이상이 필수
+# Spring 6 프로젝트는 Jakarta EE 10 지원을 위해 Tomcat 10.1 이상
 FROM tomcat:10.1-jdk21-openjdk-slim
 # 2. 톰캣의 기본 앱들을 삭제하여 ROOT 충돌 방지
 RUN rm -rf /usr/local/tomcat/webapps/*
