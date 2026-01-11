@@ -235,6 +235,30 @@
             .swiper-pagination-bullet-active {
                 background: var(--accent);
             }
+
+            /* Decorator Images */
+            .deco-img {
+                position: absolute;
+                pointer-events: none;
+                z-index: 5;
+                filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+                animation: floating 3s ease-in-out infinite;
+                opacity: 0.8;
+            }
+
+            @keyframes floating {
+                0% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+
+                50% {
+                    transform: translateY(-15px) rotate(2deg);
+                }
+
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+            }
         </style>
 
         <div class="premium-hero fade-in">
@@ -245,6 +269,8 @@
                     <div class="swiper-slide">
                         <div class="slide-content">
                             <div class="slide-header">
+                                <img src="/resources/img/lego-crab-2.png" class="deco-img"
+                                    style="width: 180px; top: -50px; right: -30px; transform: rotate(10deg);" />
                                 <h2 class="p-title" data-swiper-parallax="-300">프로젝트 개요</h2>
                                 <p class="p-subtitle" data-swiper-parallax="-200">DC Spring Legacy Migration Project
                                 </p>
@@ -374,6 +400,8 @@
                                     <div class="flow-node">Mapper</div>
                                     <div class="flow-arrow">→</div>
                                     <div class="flow-node">MySQL DB</div>
+                                    <img src="/resources/img/lego-crab-3.png" class="deco-img"
+                                        style="width: 150px; bottom: 10px; right: -50px; opacity: 0.6;" />
                                 </div>
                                 <div class="info-grid-compact"
                                     style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
@@ -441,11 +469,14 @@
                                             지향 프로그래밍(AOP)을 직접 구현하며 백엔드 아키텍처에 대한 깊이 있는 이해를 갖추게 되었습니다.
                                         </p>
                                         <div class="profile-info">
-                                            <span><strong>성함:</strong> 선하영 </span>
-                                            <span><strong>GitHub:</strong> <a href="https://github.com/hayohio-bit"
+                                            <span><strong>이름:</strong> 선하영 </span>
+                                            <span><strong>GitHub:</strong> <a
+                                                    href="https://github.com/hayohio-bit/daechul-spring-legacy"
                                                     target="_blank">/daechul-spring-legacy.git</a></span>
-                                            <span><strong>프로젝트 기간:</strong> 2025.12.31 - 2026.06.07</span>
+                                            <span><strong>프로젝트 기간:</strong> 2025.12.31 - 2026.01.07</span>
                                         </div>
+                                        <img src="/resources/img/lego-crab-1.png" class="deco-img"
+                                            style="width: 220px; bottom: -20px; left: -100px; transform: scaleX(-1);" />
                                     </div>
                                 </div>
                             </div>
