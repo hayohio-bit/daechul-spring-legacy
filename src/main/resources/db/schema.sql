@@ -1,6 +1,4 @@
--- 테이블 생성 시작 (Aiven defaultdb용)
-
--- members 테이블
+-- 1. members 테이블 생성
 CREATE TABLE members (
     id VARCHAR(50) PRIMARY KEY,
     password VARCHAR(200) NOT NULL,
@@ -11,16 +9,14 @@ CREATE TABLE members (
     regdate TIMESTAMP DEFAULT NOW(),
     enabled BOOLEAN DEFAULT TRUE
 );
-
--- member_roles 테이블
+-- 2. member_roles 테이블 생성
 CREATE TABLE member_roles (
     id VARCHAR(50) NOT NULL,
     role VARCHAR(50) NOT NULL,
     PRIMARY KEY (id, role),
     FOREIGN KEY (id) REFERENCES members(id) ON DELETE CASCADE
 );
-
--- board 테이블
+-- 3. board 테이블 생성
 CREATE TABLE board (
     seq INT AUTO_INCREMENT PRIMARY KEY,
     writer VARCHAR(50) NOT NULL,
@@ -33,8 +29,7 @@ CREATE TABLE board (
     delflag BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (writer) REFERENCES members(id) ON DELETE CASCADE
 );
-
--- reply 테이블
+-- 4. reply 테이블 생성
 CREATE TABLE reply (
     rno INT AUTO_INCREMENT PRIMARY KEY,
     bno INT NOT NULL,
@@ -45,8 +40,7 @@ CREATE TABLE reply (
     delflag BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (bno) REFERENCES board(seq) ON DELETE CASCADE
 );
-
--- persistent_logins 테이블 (Spring Security)
+-- 5. persistent_logins 테이블 생성 (Spring Security)
 CREATE TABLE persistent_logins (
     username VARCHAR(64) NOT NULL,
     series VARCHAR(64) PRIMARY KEY,
