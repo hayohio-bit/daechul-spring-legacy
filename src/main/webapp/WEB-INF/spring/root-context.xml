@@ -6,11 +6,14 @@
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="
 	    http://www.springframework.org/schema/beans
 	    https://www.springframework.org/schema/beans/spring-beans.xsd
 	    http://www.springframework.org/schema/context
 	    https://www.springframework.org/schema/context/spring-context.xsd
+	    http://www.springframework.org/schema/jdbc
+	    https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 	    http://www.springframework.org/schema/tx
 	    https://www.springframework.org/schema/tx/spring-tx.xsd
 	    http://www.springframework.org/schema/aop
@@ -66,6 +69,11 @@
 	
 	<!-- @Transactional 사용 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- 자동 테이블 생성 설정 (배포 시 편리함) -->
+	<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
+		<jdbc:script location="classpath:db/schema.sql" />
+	</jdbc:initialize-database>
 
 	<!-- Mapper 인터페이스 자동 스캔 -->
 	<mybatis-spring:scan base-package="org.zerock.mapper" />

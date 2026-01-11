@@ -1,10 +1,4 @@
--- dcdb 데이터베이스 생성 및 계정 설정
-CREATE DATABASE IF NOT EXISTS dcdb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER IF NOT EXISTS 'dcdb'@'localhost' IDENTIFIED BY '1234';
-GRANT ALL PRIVILEGES ON dcdb.* TO 'dcdb'@'localhost';
-FLUSH PRIVILEGES;
-
-USE dcdb;
+-- 테이블 생성 시작 (Aiven defaultdb용)
 
 -- members 테이블
 CREATE TABLE members (
