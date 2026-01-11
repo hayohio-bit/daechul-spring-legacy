@@ -19,6 +19,9 @@
 	    http://mybatis.org/schema/mybatis-spring.xsd">
 	
 
+	<!-- 환경 변수 및 설정을 위한 플레이스홀더 설정 -->
+	<context:property-placeholder />
+
 	<!-- 통합 컴포넌트 스캔 -->
 	<context:component-scan
 		base-package="org.zerock.service,org.zerock.security,org.zerock.aop" />
@@ -33,9 +36,9 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/dcdb?serverTimezone=Asia/Seoul&amp;characterEncoding=UTF-8&amp;useUnicode=true" />
-		<property name="username" value="dcdb" />
-		<property name="password" value="1234" />
+			value="${DB_URL:jdbc:mysql://localhost:3306/dcdb?serverTimezone=Asia/Seoul&amp;characterEncoding=UTF-8&amp;useUnicode=true}" />
+		<property name="username" value="${DB_USERNAME:dcdb}" />
+		<property name="password" value="${DB_PASSWORD:1234}" />
 		<property name="connectionTimeout" value="30000" />
 		<property name="minimumIdle" value="2" />
 		<property name="maximumPoolSize" value="10" />
