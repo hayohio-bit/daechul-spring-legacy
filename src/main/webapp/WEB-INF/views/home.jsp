@@ -58,6 +58,7 @@
                 margin-bottom: 0.5rem;
                 background: linear-gradient(to right, #ffffff, var(--accent));
                 -webkit-background-clip: text;
+                background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
 
@@ -342,6 +343,8 @@
                                 </p>
                             </div>
                             <div class="slide-body" data-swiper-parallax="-100">
+                                <img src="/resources/img/lego-crab-2.png" class="deco-img"
+                                    style="width: 130px; top: 0px; right: 0px; opacity: 0.4;" />
                                 <div class="info-grid">
                                     <div class="info-item">
                                         <h5>Controller</h5>
@@ -400,8 +403,8 @@
                                     <div class="flow-node">Mapper</div>
                                     <div class="flow-arrow">→</div>
                                     <div class="flow-node">MySQL DB</div>
-                                    <img src="/resources/img/lego-crab-3.png" class="deco-img"
-                                        style="width: 150px; bottom: 10px; right: -50px; opacity: 0.6;" />
+                                    <img src="/resources/img/lego-crab-1.png" class="deco-img"
+                                        style="width: 140px; bottom: -20px; right: -40px; opacity: 0.5;" />
                                 </div>
                                 <div class="info-grid-compact"
                                     style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
