@@ -21,7 +21,7 @@ https://daechul-spring-legacy.onrender.com/
 
 - [**마이그레이션 가이드 (MIGRATION_GUIDE)**](docs/MIGRATION_GUIDE.md): 기존 서블릿 프로젝트 대비 변경 사항 및 코드 변환 예시
 
-- [**마이그레이션 팁 및 유용한 도구 (MIGRATION_TIPS)**](docs/MIGRATION_TIPS)**: 효율적인 작업을 위한 도구, 코드 패턴 및 추천 리소스
+- [**마이그레이션 팁 및 유용한 도구 (MIGRATION_TIPS)**](docs/MIGRATION_TIPS.md): 효율적인 작업을 위한 도구, 코드 패턴 및 추천 리소스
 
 - [**파일 구조 맵 (FILE_STRUCTURE)**](docs/FILE_STRUCTURE.md): 프로젝트 내 주요 파일 및 디렉토리 역할 설명
   
