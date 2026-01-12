@@ -1,9 +1,12 @@
 # Spring Legacy Migration
 
 [**대철이제철 프로젝트 Spring Legacy 마이그레이션**](https://github.com/every-git/daechul-project)  
+
 JSP/Servlet 기반 게시판 시스템을 Spring MVC 프레임워크 구조로 전환한 프로젝트입니다.  
   
+  
 ## 🌐 Demo / 배포 링크: https://daechul-spring-legacy.onrender.com/  
+  
   
 ## 📖 프로젝트 가이드 및 상세 문서
 
