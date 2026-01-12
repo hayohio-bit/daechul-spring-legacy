@@ -9,31 +9,6 @@
                 </sec:authorize>
             </div>
 
-            <!-- Decoration -->
-            <img src="/resources/img/lego-crab-1.png" class="deco-img"
-                style="width: 160px; position: fixed; bottom: 20px; left: 20px; z-index: 100;" />
-
-            <style>
-                .deco-img {
-                    pointer-events: none;
-                    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-                    animation: floating 3s ease-in-out infinite;
-                }
-
-                @keyframes floating {
-                    0% {
-                        transform: translateY(0px) rotate(0deg);
-                    }
-
-                    50% {
-                        transform: translateY(-15px) rotate(2deg);
-                    }
-
-                    100% {
-                        transform: translateY(0px) rotate(0deg);
-                    }
-                }
-            </style>
 
             <table>
                 <thead>

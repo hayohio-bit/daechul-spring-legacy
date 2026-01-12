@@ -16,7 +16,7 @@
             .premium-hero {
                 margin-top: 1rem;
                 border-radius: 1.5rem;
-                overflow: hidden;
+                /* overflow: hidden; */
                 box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
                 background: #0f172a;
                 position: relative;
@@ -483,15 +483,18 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
-            <!-- Global Decoration -->
-            <img src="${pageContext.request.contextPath}/resources/img/lego-crab-2.png" class="deco-img"
-                style="width: 200px; bottom: -40px; right: 20px; z-index: 20;" />
         </div>
 
-        <div style="margin-top: 2rem; text-align: center;">
+        <div
+            style="margin-top: 3rem; position: relative; display: flex; align-items: center; justify-content: center; min-height: 80px;">
             <a href="${pageContext.request.contextPath}/board/list" class="btn-premium"
-                style="background: var(--primary-gradient); color: white; padding: 1rem 3rem; border-radius: 0.75rem; text-decoration: none; font-weight: 700; box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3); display: inline-block;">
+                style="background: var(--primary-gradient); color: white; padding: 1rem 2.8rem; border-radius: 0.75rem; text-decoration: none; font-weight: 700; box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3); display: inline-block; z-index: 10;">
                 게시판 서비스 둘러보기 →
+            </a>
+            <a href="${pageContext.request.contextPath}/board/list"
+                style="position: absolute; left: 55%; transform: translateX(90px); bottom: -5px; z-index: 9999;">
+                <img src="${pageContext.request.contextPath}/resources/img/lego-crab-1.png" class="deco-img-button"
+                    style="width: 110px; filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3)); animation: floating 3s ease-in-out infinite;" />
             </a>
         </div>
 
@@ -515,7 +518,10 @@
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-                grabCursor: true
+                grabCursor: true,
+                keyboard: {
+                    enabled: true,
+                },
             });
         </script>
 
