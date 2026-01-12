@@ -60,7 +60,6 @@ public class BoardServiceImpl implements BoardService {
 - **[Baeldung](https://www.baeldung.com/)**: Spring의 거의 모든 기능을 코드 예제와 함께 설명하는 가장 유명한 사이트입니다.
 - **[Spring 공식 가이드](https://spring.io/guides)**: Spring 팀에서 제공하는 공식 가이드로, 특정 기능을 구현하는 'How-to' 문서가 많습니다.
 - **[MyBatis 공식 문서](https://mybatis.org/mybatis-3/ko/index.html)**: 매퍼 설정이나 동적 SQL 작성이 헷갈릴 때 가장 정확한 정보를 제공합니다.
-- **[Inlearn (인프런)](https://www.inflearn.com/)**: '김영한의 스프링 핵심 원리'와 같은 유료 강의도 마이그레이션 기본기를 다지는 데 매우 좋습니다.
 
 ## 4. 현대적 Java (Java 21) 활용
 현재 프로젝트는 **Java 21**을 사용하고 있습니다. 마이그레이션 중에 다음과 같은 현대적 문법을 활용해보세요.

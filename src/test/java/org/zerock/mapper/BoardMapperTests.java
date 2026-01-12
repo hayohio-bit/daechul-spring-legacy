@@ -11,22 +11,21 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.zerock.dto.BoardDTO;
-import org.zerock.dto.Criteria;
+import org.zerock.dto.*;
 
 import lombok.extern.log4j.Log4j2;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j2
-public class BoardMapperTests {
+class BoardMapperTests {
 
 	@Autowired
 	private BoardMapper boardMapper;
 
 	@Test
 	@DisplayName("getList - 전체 게시글 조회")
-	public void testGetList() {
+	void testGetList() {
 		List<BoardDTO> list = boardMapper.getList();
 		assertNotNull(list);
 		log.info("BoardMapper getList() 반환 개수: {}", list.size());
@@ -34,7 +33,7 @@ public class BoardMapperTests {
 
 	@Test
 	@DisplayName("getListWithPaging - 페이징 조회")
-	public void testGetListWithPaging() {
+	void testGetListWithPaging() {
 		Criteria cri = new Criteria();
 		cri.setPageNum(1);
 		cri.setAmount(10);
@@ -45,7 +44,7 @@ public class BoardMapperTests {
 
 	@Test
 	@DisplayName("getTotalCount - 총 게시글 수")
-	public void testGetTotalCount() {
+	void testGetTotalCount() {
 		Criteria cri = new Criteria();
 		int total = boardMapper.getTotalCount(cri);
 		log.info("총 게시글 수: {}", total);
@@ -54,7 +53,7 @@ public class BoardMapperTests {
 
 	@Test
 	@DisplayName("read - 게시글 상세조회")
-	public void testRead() {
+	void testRead() {
 		// 해당 seq가 DB에 존재하는지 확인 필요 (예제에서는 1번 사용)
 		BoardDTO boardDTO = boardMapper.read(1);
 		log.info("seq=1 조회 결과: {}", boardDTO);

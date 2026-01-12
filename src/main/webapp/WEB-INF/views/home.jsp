@@ -484,12 +484,12 @@
                 <div class="swiper-button-next"></div>
             </div>
             <!-- Global Decoration -->
-            <img src="/resources/img/lego-crab-2.png" class="deco-img"
+            <img src="${pageContext.request.contextPath}/resources/img/lego-crab-2.png" class="deco-img"
                 style="width: 200px; bottom: -40px; right: 20px; z-index: 20;" />
         </div>
 
         <div style="margin-top: 2rem; text-align: center;">
-            <a href="/board/list" class="btn-premium"
+            <a href="${pageContext.request.contextPath}/board/list" class="btn-premium"
                 style="background: var(--primary-gradient); color: white; padding: 1rem 3rem; border-radius: 0.75rem; text-decoration: none; font-weight: 700; box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3); display: inline-block;">
                 게시판 서비스 둘러보기 →
             </a>
