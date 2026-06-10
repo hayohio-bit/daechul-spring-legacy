@@ -5,7 +5,9 @@
 <br />
 
 ## 🌐 Demo / 배포 링크  
-https://daechul-spring-legacy.onrender.com/
+<https://daechul-spring-legacy.onrender.com/>
+
+> 💡 무료 호스팅 특성상 첫 접속 시 **콜드스타트(Cold Start)로 인해 약 30~50초의 로딩**이 발생할 수 있습니다.
 
 <br />
 
@@ -36,5 +38,3 @@ https://daechul-spring-legacy.onrender.com/
 - Spring Framework의 DI(의존성 주입) 및 IoC(제어의 역전) 적용
 
 - 계층형 아키텍처(Controller-Service-Mapper) 도입을 통한 유지보수성 향상
-
-

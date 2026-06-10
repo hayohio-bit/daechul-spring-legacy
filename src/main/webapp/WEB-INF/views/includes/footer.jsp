@@ -7,7 +7,7 @@
         <a href="mailto:hayohio@gmail.com"
             style="color: var(--text-muted); text-decoration: none; margin: 0 8px; font-size: 0.8rem;">Contact</a>
     </div>
-    <p style="margin: 0.2rem 0;">&copy; <%= java.time.Year.now().getValue() %> <b>Sun Ha-young</b>. All rights reserved.
+    <p style="margin: 0.2rem 0;">&copy; 2026 <b>Sun Ha-young</b>. All rights reserved.
     </p>
     <p style="font-size: 0.7rem; opacity: 0.7; margin-top: 0.3rem;">Legacy Migration Project based on Spring Framework 6
     </p>

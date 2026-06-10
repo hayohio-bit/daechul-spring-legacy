@@ -62,4 +62,60 @@ class BoardMapperTests {
 			log.info("title: {}, delFlag: {}", boardDTO.getTitle(), boardDTO.isDelflag());
 		}
 	}
+	@Test
+	@DisplayName("insert - 게시글 등록")
+	void testInsert() {
+		BoardDTO board = new BoardDTO();
+		board.setTitle("새로 작성하는 글");
+		board.setContent("새로 작성하는 내용");
+		board.setWriter("newbie");
+
+		boardMapper.insert(board);
+		log.info("insert 된 게시글: {}", board);
+	}
+
+	@Test
+	@DisplayName("insertSelectKey - 게시글 등록 후 PK 확인")
+	void testInsertSelectKey() {
+		BoardDTO board = new BoardDTO();
+		board.setTitle("새로 작성하는 글 select key");
+		board.setContent("새로 작성하는 내용 select key");
+		board.setWriter("newbie");
+
+		boardMapper.insertSelectKey(board);
+		log.info("insertSelectKey 등록 후 BNO: {}", board.getBno());
+	}
+
+	@Test
+	@DisplayName("delete - 게시글 삭제")
+	void testDelete() {
+		log.info("DELETE COUNT: {}", boardMapper.delete(3)); // 임의의 번호
+	}
+
+	@Test
+	@DisplayName("update - 게시글 수정")
+	void testUpdate() {
+		BoardDTO board = new BoardDTO();
+		board.setBno(1); // 존재하는 번호여야 함
+		board.setTitle("수정된 제목");
+		board.setContent("수정된 내용");
+		board.setWriter("user00");
+
+		int count = boardMapper.update(board);
+		log.info("UPDATE COUNT: {}", count);
+	}
+	
+	@Test
+	@DisplayName("updateReplyCnt - 댓글 수 업데이트")
+	void testUpdateReplyCnt() {
+		boardMapper.updateReplyCnt(1, 1);
+		log.info("1번 게시글 댓글 수 1 증가 완료");
+	}
+
+	@Test
+	@DisplayName("updateHit - 조회수 업데이트")
+	void testUpdateHit() {
+		boardMapper.updateHit(1);
+		log.info("1번 게시글 조회수 1 증가 완료");
+	}
 }
