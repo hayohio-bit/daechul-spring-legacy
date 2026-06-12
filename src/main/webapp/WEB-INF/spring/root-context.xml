@@ -45,6 +45,7 @@
 		<property name="connectionTimeout" value="30000" />
 		<property name="minimumIdle" value="2" />
 		<property name="maximumPoolSize" value="10" />
+		<property name="connectionInitSql" value="SET time_zone = '+09:00'" />
 	</bean>
 
 	<!-- DataSource -->
