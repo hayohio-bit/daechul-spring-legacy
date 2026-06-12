@@ -96,7 +96,7 @@ class BoardMapperTests {
 	@DisplayName("update - 게시글 수정")
 	void testUpdate() {
 		BoardDTO board = new BoardDTO();
-		board.setBno(1); // 존재하는 번호여야 함
+		board.setSeq(1); // 존재하는 번호여야 함
 		board.setTitle("수정된 제목");
 		board.setContent("수정된 내용");
 		board.setWriter("user00");
