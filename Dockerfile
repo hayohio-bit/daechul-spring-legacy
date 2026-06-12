@@ -20,6 +20,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=build /app/target/dc-sf-spring.war /usr/local/tomcat/webapps/ROOT.war
 
 # 포트 및 환경 변수 설정
-ENV CATALINA_OPTS="-Djava.security.egd=file:/dev/./urandom"
+ENV TZ=Asia/Seoul
+ENV CATALINA_OPTS="-Djava.security.egd=file:/dev/./urandom -Duser.timezone=Asia/Seoul"
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
