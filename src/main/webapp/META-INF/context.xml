@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- Tomcat 시작 속도를 높이기 위해 불필요한 TLD 스캔을 방지합니다. 
+         JSTL 및 Spring WebMVC 등 필수 JAR만 스캔하도록 설정합니다. -->
+    <JarScanner>
+        <JarScanFilter defaultTldScan="false" defaultPluggabilityScan="false" 
+                       tldScan="jstl*.jar,jakarta.servlet.jsp.jstl-api*.jar,spring-webmvc*.jar,spring-security-taglibs*.jar" />
+    </JarScanner>
+</Context>

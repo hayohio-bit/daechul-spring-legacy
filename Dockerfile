@@ -19,6 +19,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 # 1단계(build)에서 생성된 WAR 파일을 톰캣의 ROOT.war로 복사
 COPY --from=build /app/target/dc-sf-spring.war /usr/local/tomcat/webapps/ROOT.war
 
-# 포트 설정 및 실행
+# 포트 및 환경 변수 설정
+ENV CATALINA_OPTS="-Djava.security.egd=file:/dev/./urandom"
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
