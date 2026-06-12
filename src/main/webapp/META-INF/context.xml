@@ -4,6 +4,6 @@
          JSTL 및 Spring WebMVC 등 필수 JAR만 스캔하도록 설정합니다. -->
     <JarScanner>
         <JarScanFilter defaultTldScan="false" defaultPluggabilityScan="false" 
-                       tldScan="jstl*.jar,jakarta.servlet.jsp.jstl-api*.jar,spring-webmvc*.jar,spring-security-taglibs*.jar" />
+                       tldScan="jstl*.jar,jakarta.servlet.jsp.jstl*.jar,spring-webmvc*.jar,spring-security-taglibs*.jar" />
     </JarScanner>
 </Context>

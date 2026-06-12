@@ -15,9 +15,9 @@ public interface BoardMapper {
 
   public void insertSelectKey(BoardDTO board);
 
-  public BoardDTO read(int bno);
+  public BoardDTO read(int seq);
 
-  public int delete(int bno);
+  public int delete(int seq);
 
   public int update(BoardDTO board);
 
@@ -25,5 +25,5 @@ public interface BoardMapper {
 
   public void updateReplyCnt(@Param("bno") int bno, @Param("amount") int amount);
 
-  public void updateHit(int bno);
+  public void updateHit(int seq);
 }
