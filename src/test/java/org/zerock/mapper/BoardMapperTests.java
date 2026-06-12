@@ -83,7 +83,7 @@ class BoardMapperTests {
 		board.setWriter("newbie");
 
 		boardMapper.insertSelectKey(board);
-		log.info("insertSelectKey 등록 후 BNO: {}", board.getBno());
+		log.info("insertSelectKey 등록 후 SEQ: {}", board.getSeq());
 	}
 
 	@Test

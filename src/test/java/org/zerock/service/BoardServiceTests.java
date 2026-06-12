@@ -48,7 +48,7 @@ class BoardServiceTests {
 		board.setWriter("newbie");
 
 		boardService.register(board);
-		log.info("생성된 게시물의 번호: {}", board.getBno());
+		log.info("생성된 게시물의 번호: {}", board.getSeq());
 	}
 
 	@Test

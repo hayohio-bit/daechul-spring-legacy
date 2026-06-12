@@ -31,7 +31,7 @@ class ReplyMapperTests {
 		IntStream.rangeClosed(1, 10).forEach(i -> {
 			ReplyDTO reply = new ReplyDTO();
 			reply.setBno(bnoArr[i % 5]);
-			reply.setReply("댓글 테스트 " + i);
+			reply.setReplyText("댓글 테스트 " + i);
 			reply.setReplyer("replyer" + i);
 			
 			replyMapper.insert(reply);
@@ -63,7 +63,7 @@ class ReplyMapperTests {
 		
 		if (reply == null) return;
 		
-		reply.setReply("수정된 댓글입니다.");
+		reply.setReplyText("수정된 댓글입니다.");
 		int count = replyMapper.update(reply);
 		log.info("UPDATE COUNT: {}", count);
 	}

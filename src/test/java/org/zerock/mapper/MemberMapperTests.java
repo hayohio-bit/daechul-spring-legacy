@@ -30,9 +30,9 @@ class MemberMapperTests {
 	@DisplayName("insert - 회원 가입")
 	void testInsert() {
 		MemberDTO member = new MemberDTO();
-		member.setUserid("testuser1");
-		member.setUserpw(pwencoder.encode("pw00"));
-		member.setUserName("테스트사용자1");
+		member.setId("testuser1");
+		member.setPassword(pwencoder.encode("pw00"));
+		member.setName("테스트사용자1");
 		
 		int result = memberMapper.insert(member);
 		log.info("회원 가입 결과: {}", result);
@@ -42,8 +42,8 @@ class MemberMapperTests {
 	@DisplayName("insertAuth - 권한 부여")
 	void testInsertAuth() {
 		AuthDTO auth = new AuthDTO();
-		auth.setUserid("testuser1");
-		auth.setAuth("ROLE_USER");
+		auth.setId("testuser1");
+		auth.setRole("ROLE_USER");
 		
 		int result = memberMapper.insertAuth(auth);
 		log.info("권한 추가 결과: {}", result);
@@ -70,8 +70,8 @@ class MemberMapperTests {
 	@DisplayName("update - 회원 정보 업데이트")
 	void testUpdate() {
 		MemberDTO member = new MemberDTO();
-		member.setUserid("testuser1");
-		member.setUserName("수정된이름");
+		member.setId("testuser1");
+		member.setName("수정된이름");
 		
 		int result = memberMapper.update(member);
 		log.info("update result: {}", result);
